@@ -1,0 +1,17 @@
+{
+    "name": "birkof/netopia-mobilpay",
+    "description": "Mirroring MobilePay library with composer PSR-0 autoloading capability.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Daniel STANCU",
+            "email": "birkof@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-0": {
+          "Mobilpay_Payment_": "src/Mobilpay/Payment/"
+        }
+    }
+}
