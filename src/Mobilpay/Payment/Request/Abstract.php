@@ -301,8 +301,8 @@ abstract class Mobilpay_Payment_Request_Abstract
 	public function encrypt($x509FilePath)
 	{
 		$this->_prepare();
-		
-		$publicKey = openssl_pkey_get_public("file://{$x509FilePath}");
+
+		$publicKey = openssl_pkey_get_public(is_file($x509FilePath) && is_readable($x509FilePath) ? file_get_contents($x509FilePath) : $x509FilePath);
 		if($publicKey === false)
 		{
 			$this->outEncData	= null;
