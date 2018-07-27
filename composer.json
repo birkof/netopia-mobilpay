@@ -12,6 +12,9 @@
     "autoload": {
         "psr-0": {
           "Mobilpay_Payment_": "src/Mobilpay/Payment/"
+        },
+        "psr-4" : {
+            "Mobilpay\\Payment\\" : "src/Mobilpay/Payment/"
         }
     }
 }
