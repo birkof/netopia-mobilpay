@@ -1,16 +1,22 @@
 <?php
 
+namespace Mobilpay\Payment\Request;
+
+use Mobilpay\Payment\Address;
+
 /**
  * mobilPay
  *
- * @package   Mobilpay_Payment_Request_Notify
- * @copyright  Copyright (c)NETOPIA
- * @author      Claudiu Tudose <claudiu.tudose@netopia-system.com>
+ * @package     Notify
+ * @copyright   Copyright (c) NETOPIA
+ * @author      Claudiu Tudose
+ * @maintainer  Daniel Stancu
+ * @version     2.0
  *
  * This class is used for the IPN
  */
-class Mobilpay_Payment_Request_Notify {
-
+class Notify
+{
     /**
      *
      * class-specific errors
@@ -63,7 +69,7 @@ class Mobilpay_Payment_Request_Notify {
      * Array of discounts that have been applied in the payment process
      * @var array
      */
-    public $discounts = Array();
+    public $discounts = [];
 
     /**
      *
@@ -77,51 +83,59 @@ class Mobilpay_Payment_Request_Notify {
      * parameters array
      * @var array
      */
-    public $params = array();
+    public $params = [];
 
     /**
-     *
      * Constructor
      */
-    function __construct() {
-        
+    function __construct()
+    {
+
     }
 
     /**
      *
      * Populate the class from the request xml
-     * @param DOMNode $elem
-     * @return Mobilpay_Payment_Reuquest_Notify
+     *
+     * @param \DOMNode $elem
+     *
+     * @return $this
      * @throws Exception On missing xml attributes
      */
-    public function loadFromXml(DOMElement $elem) {
+    public function loadFromXml(\DOMElement $elem)
+    {
         $attr = $elem->attributes->getNamedItem('timestamp');
         if ($attr != null) {
             $this->timestamp = $attr->nodeValue;
         }
         $attr = $elem->attributes->getNamedItem('crc');
         if ($attr == null) {
-            throw new Exception('Mobilpay_Payment_Request_Notify::loadFromXml failed; mandatory crc attribute missing', self::ERROR_LOAD_FROM_XML_CRC_ATTR_MISSING);
+            throw new \Exception(
+                'Mobilpay\Payment\Request\Notify::loadFromXml failed; mandatory crc attribute missing',
+                self::ERROR_LOAD_FROM_XML_CRC_ATTR_MISSING
+            );
         }
         $this->_crc = $attr->nodeValue;
         $elems = $elem->getElementsByTagName('action');
         if ($elems->length != 1) {
-            throw new Exception('Mobilpay_Payment_Request_Notify::loadFromXml failed; mandatory action attribute missing', self::ERROR_LOAD_FROM_XML_ACTION_ELEM_MISSING);
+            throw new \Exception(
+                'Mobilpay\Payment\Request\Notify::loadFromXml failed; mandatory action attribute missing',
+                self::ERROR_LOAD_FROM_XML_ACTION_ELEM_MISSING
+            );
         }
         $this->action = $elems->item(0)->nodeValue;
         $elems = $elem->getElementsByTagName('customer');
         if ($elems->length == 1) {
-            $this->customer = new Mobilpay_Payment_Address($elems->item(0));
+            $this->customer = new Address($elems->item(0));
         }
         $elems = $elem->getElementsByTagName('issuer');
         if ($elems->length == 1) {
             $this->issuer = $elems->item(0)->nodeValue;
         }
         $elems = $elem->getElementsByTagName('rrn');
-		if ($elems->length == 1)
-		{
-			$this->rrn = $elems->item(0)->nodeValue;
-		}
+        if ($elems->length == 1) {
+            $this->rrn = $elems->item(0)->nodeValue;
+        }
         $elems = $elem->getElementsByTagName('purchase');
         if ($elems->length == 1) {
             $this->purchaseId = $elems->item(0)->nodeValue;
@@ -181,9 +195,9 @@ class Mobilpay_Payment_Request_Notify {
         $elems = $elem->getElementsByTagName('discounts');
         if ($elems->length == 1) {
             $doaElems = $elems->item(0)->getElementsByTagName('discount');
-            $this->discounts = Array();
+            $this->discounts = [];
             foreach ($doaElems as $de) {
-                $doaEntry = new stdClass();
+                $doaEntry = new \stdClass();
                 $doaEntry->id = $de->attributes->getNamedItem('id')->nodeValue;
                 $doaEntry->amount = $de->attributes->getNamedItem('amount')->nodeValue;
                 $doaEntry->currency = $de->attributes->getNamedItem('currency')->nodeValue;
@@ -205,12 +219,15 @@ class Mobilpay_Payment_Request_Notify {
     /**
      *
      * Populates the object from a sms payment request query string
+     *
      * @param string $queryString
+     *
      * @throws Exception On missing attributes
      */
-    public function _loadFromQueryString($queryString) {
+    public function _loadFromQueryString($queryString)
+    {
         $parameters = explode('&', $queryString);
-        $reqParams = array();
+        $reqParams = [];
         foreach ($parameters as $item) {
             list($key, $value) = explode('=', $item);
             $reqParams[$key] = urldecode($value);
@@ -234,22 +251,25 @@ class Mobilpay_Payment_Request_Notify {
     /**
      *
      * Appends to computed xml element to  the xmlDoc and returns it
-     * @param DOMDocument $xmlDoc
-     * @return DOMElement
+     *
+     * @param \DOMDocument $xmlDoc
+     *
+     * @return \DOMElement
      */
-    public function createXmlElement(DOMDocument $xmlDoc) {
+    public function createXmlElement(\DOMDocument $xmlDoc)
+    {
         $xmlNotifyElem = $xmlDoc->createElement('mobilpay');
         $attr = $xmlDoc->createAttribute('timestamp');
         $attr->nodeValue = date('YmdHis');
         $xmlNotifyElem->appendChild($attr);
-        $this->_crc = md5(rand() . time());
+        $this->_crc = md5(rand().time());
         $attr = $xmlDoc->createAttribute('crc');
         $attr->nodeValue = $this->_crc;
         $xmlNotifyElem->appendChild($attr);
         $elem = $xmlDoc->createElement('action');
         $elem->nodeValue = $this->action;
         $xmlNotifyElem->appendChild($elem);
-        if ($this->customer instanceof Mobilpay_Payment_Address) {
+        if ($this->customer instanceof Address) {
             $xmlNotifyElem->appendChild($this->customer->createXmlElement($xmlDoc, 'customer'));
         }
         $elem = $xmlDoc->createElement('purchase');
@@ -270,45 +290,44 @@ class Mobilpay_Payment_Request_Notify {
             $elem->nodeValue = $this->promotionAmount;
             $xmlNotifyElem->appendChild($elem);
         }
-        if (is_null($this->current_payment_count) == FALSE) {
+        if (is_null($this->current_payment_count) == false) {
             $elem = $xmlDoc->createElement('current_payment_count');
             $elem->nodeValue = $this->current_payment_count;
             $xmlNotifyElem->appendChild($elem);
         }
-        if (is_null($this->pan_masked) == FALSE) {
+        if (is_null($this->pan_masked) == false) {
             $elem = $xmlDoc->createElement('pan_masked');
             $elem->nodeValue = $this->pan_masked;
             $xmlNotifyElem->appendChild($elem);
         }
-        if (is_null($this->rrn) == FALSE)
-		{
-			$elem = $xmlDoc->createElement('rrn');
-			$elem->nodeValue = $this->rrn;
-			$xmlNotifyElem->appendChild($elem);
-		}
-        if (is_null($this->paymentInstrumentId) == FALSE) {
+        if (is_null($this->rrn) == false) {
+            $elem = $xmlDoc->createElement('rrn');
+            $elem->nodeValue = $this->rrn;
+            $xmlNotifyElem->appendChild($elem);
+        }
+        if (is_null($this->paymentInstrumentId) == false) {
             $elem = $xmlDoc->createElement('payment_instrument_id');
             $elem->nodeValue = $this->paymentInstrumentId;
             $xmlNotifyElem->appendChild($elem);
         }
-        if (is_null($this->token_id) == FALSE) {
+        if (is_null($this->token_id) == false) {
             $elem = $xmlDoc->createElement('token_id');
             $elem->nodeValue = $this->token_id;
             $xmlNotifyElem->appendChild($elem);
         }
-        if (is_null($this->token_expiration_date) == FALSE) {
+        if (is_null($this->token_expiration_date) == false) {
             $elem = $xmlDoc->createElement('token_expiration_date');
             $elem->nodeValue = $this->token_expiration_date;
             $xmlNotifyElem->appendChild($elem);
         }
-        if (is_null($this->customer_type) == FALSE) {
+        if (is_null($this->customer_type) == false) {
             $elem = $xmlDoc->createElement('customer_type');
             $elem->nodeValue = $this->customer_type;
             $xmlNotifyElem->appendChild($elem);
         } else {
             //TODO alex
         }
-        if (is_null($this->customer_id) == FALSE) {
+        if (is_null($this->customer_id) == false) {
             $elem = $xmlDoc->createElement('customer_id');
             $elem->nodeValue = $this->customer_id;
             $xmlNotifyElem->appendChild($elem);
@@ -337,12 +356,12 @@ class Mobilpay_Payment_Request_Notify {
             $elem = $xmlDoc->createElement('discounts');
             foreach ($this->discounts as $d) {
                 $discount = $xmlDoc->createElement('discount');
-                $attributes = Array(
+                $attributes = [
                     'id',
                     'amount',
                     'currency',
-                    'third_party'
-                );
+                    'third_party',
+                ];
                 foreach ($attributes as $attr_name) {
                     $attr = $xmlDoc->createAttribute($attr_name);
                     $attr->nodeValue = $d->$attr_name;
@@ -387,6 +406,7 @@ class Mobilpay_Payment_Request_Notify {
         $elem->appendChild($attr);
         $elem->appendChild($xmlDoc->createCDATASection($this->errorMessage));
         $xmlNotifyElem->appendChild($elem);
+
         return $xmlNotifyElem;
     }
 
@@ -395,7 +415,8 @@ class Mobilpay_Payment_Request_Notify {
      * Returns the CRC hash
      * @return string
      */
-    public function getCrc() {
+    public function getCrc()
+    {
         return $this->_crc;
     }
 
