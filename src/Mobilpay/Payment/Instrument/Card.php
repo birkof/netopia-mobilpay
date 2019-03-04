@@ -5,8 +5,7 @@ namespace Mobilpay\Payment\Instrument;
 /**
  * Class Card
  * @copyright   Copyright (c) NETOPIA
- * @author      Claudiu Tudose
- * @maintainer  Daniel Stancu
+ * @author      Claudiu Tudose / maintainer  Daniel Stancu
  * @version     2.0
  *
  */

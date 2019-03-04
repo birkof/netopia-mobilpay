@@ -6,8 +6,7 @@ namespace Mobilpay\Payment;
  * Class Request
  * This class can be used for accessing mobilpay.ro payment interface for your configured online services
  * @copyright   Copyright (c) NETOPIA
- * @author      Claudiu Tudose
- * @maintainer  Daniel Stancu
+ * @author      Claudiu Tudose / maintainer  Daniel Stancu
  * @version     2.0
  *
  * This class uses  OpenSSL

@@ -9,8 +9,7 @@ use Mobilpay\Payment\Address;
  *
  * @package     Notify
  * @copyright   Copyright (c) NETOPIA
- * @author      Claudiu Tudose
- * @maintainer  Daniel Stancu
+ * @author      Claudiu Tudose / maintainer  Daniel Stancu
  * @version     2.0
  *
  * This class is used for the IPN

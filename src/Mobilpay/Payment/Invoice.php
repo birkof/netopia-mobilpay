@@ -8,8 +8,7 @@ use Mobilpay\Payment\Invoice\Item;
 /**
  * Class Invoice
  * @copyright   Copyright (c) NETOPIA
- * @author      Claudiu Tudose
- * @maintainer  Daniel Stancu
+ * @author      Claudiu Tudose / maintainer Daniel Stancu
  * @version     2.0
  *
  */
