@@ -6,7 +6,7 @@ namespace Mobilpay\Payment\Invoice;
  * Class Item
  * @copyright   Copyright (c) NETOPIA
  * @author      Claudiu Tudose / maintainer  Daniel Stancu
- * @version     2.0
+ * @version     2.1
  *
  */
 class Item

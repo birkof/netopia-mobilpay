@@ -2,12 +2,14 @@
 
 namespace Mobilpay\Payment;
 
+use Mobilpay\MobilpayGlobal;
+
 /**
  * Class Request
  * This class can be used for accessing mobilpay.ro payment interface for your configured online services
  * @copyright   Copyright (c) NETOPIA
  * @author      Claudiu Tudose / maintainer  Daniel Stancu
- * @version     2.0
+ * @version     2.1
  *
  * This class uses  OpenSSL
  * In order to use the OpenSSL functions you need to install the OpenSSL package.
@@ -146,19 +148,9 @@ class Request
                 $params[$key] = urlencode($value);
             }
         }
-        $params['crc'] = Mobilpay_Global::buildCRC($params);
+        $params['crc'] = MobilpayGlobal::buildCRC($params);
 
         return $params;
-    }
-
-    static function buildQueryString($params)
-    {
-        $crc_pairs = [];
-        foreach ($params as $key => $value) {
-            $crc_pairs[] = "{$key}={$value}";
-        }
-
-        return implode('&', $crc_pairs);
     }
 
     /**
@@ -176,7 +168,7 @@ class Request
         if (is_null($params)) {
             return false;
         }
-        $src_data = self::buildQueryString($params);
+        $src_data = MobilpayGlobal::buildQueryString($params);
         $enc_data = '';
         $env_keys = [];
         $result = openssl_seal($src_data, $enc_data, $env_keys, [$public_key]);

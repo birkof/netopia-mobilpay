@@ -7,7 +7,7 @@ namespace Mobilpay\Payment\Request;
  * This class can be used for accessing mobilpay.ro payment interface for your configured online services
  * @copyright   Copyright (c) NETOPIA
  * @author      Claudiu Tudose / maintainer  Daniel Stancu
- * @version     2.0
+ * @version     2.1
  *
  */
 class Sms extends RequestAbstract
