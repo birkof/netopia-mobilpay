@@ -48,6 +48,7 @@ class Notify
     public $validationCode = null;
     public $installments = null;
     public $rrn = null;
+    public $paymentCode = null;
 
     /**
      *
@@ -190,6 +191,10 @@ class Notify
         $elems = $elem->getElementsByTagName('installments');
         if ($elems->length == 1) {
             $this->installments = $elems->item(0)->nodeValue;
+        }
+        $elems = $elem->getElementsByTagName('payment_code');
+        if ($elems->length == 1) {
+            $this->paymentCode = $elems->item(0)->nodeValue;
         }
         $elems = $elem->getElementsByTagName('discounts');
         if ($elems->length == 1) {
