@@ -100,7 +100,7 @@ class Request
      */
     public $m_params = [];
 
-    public function builParametersList()
+    public function buildParametersList()
     {
         if (is_null($this->m_signature) || /*is_null($this->m_service) || */
             is_null($this->m_tran_id) || is_null($this->m_timestamp)) {
@@ -164,14 +164,15 @@ class Request
      */
     public function buildAccessParameters($public_key, &$env_key, &$enc_data)
     {
-        $params = $this->builParametersList();
+        $params = $this->buildParametersList();
         if (is_null($params)) {
             return false;
         }
         $src_data = MobilpayGlobal::buildQueryString($params);
         $enc_data = '';
         $env_keys = [];
-        $result = openssl_seal($src_data, $enc_data, $env_keys, [$public_key]);
+        $cipher_algo = 'RC4';
+        $result = openssl_seal($src_data, $enc_data, $env_keys, [$public_key], $cipher_algo);
         if ($result === false) {
             $env_key = null;
             $enc_data = null;

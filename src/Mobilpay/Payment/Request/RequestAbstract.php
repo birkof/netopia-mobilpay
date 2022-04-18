@@ -2,6 +2,10 @@
 
 namespace Mobilpay\Payment\Request;
 
+use DOMDocument;
+use DOMNode;
+use Exception;
+
 /**
  * Class RequestAbstract
  * This class can be used for accessing mobilpay.ro payment interface for your configured online services
@@ -128,7 +132,7 @@ abstract class RequestAbstract
     static public function factory($data)
     {
         $objPmReq = null;
-        $xmlDoc = new \DOMDocument();
+        $xmlDoc = new DOMDocument();
         if (@$xmlDoc->loadXML($data) === true) {
             //try to create payment request from xml
             $objPmReq = self::_factoryFromXml($xmlDoc);
@@ -142,6 +146,9 @@ abstract class RequestAbstract
         return $objPmReq;
     }
 
+    /**
+     * @throws Exception
+     */
     static public function factoryFromEncrypted($envKey, $encData, $privateKeyFilePath, $privateKeyPassword = null)
     {
         $privateKey = null;
@@ -160,35 +167,39 @@ abstract class RequestAbstract
             );
         }
         if ($privateKey === false) {
-            throw new \Exception('Error loading private key', self::ERROR_CONFIRM_LOAD_PRIVATE_KEY);
+            throw new Exception('Error loading private key', self::ERROR_CONFIRM_LOAD_PRIVATE_KEY);
         }
 
         $srcData = base64_decode($encData);
 
         if ($srcData === false) {
             @openssl_free_key($privateKey);
-            throw new \Exception('Failed decoding data', self::ERROR_CONFIRM_FAILED_DECODING_DATA);
+            throw new Exception('Failed decoding data', self::ERROR_CONFIRM_FAILED_DECODING_DATA);
         }
 
         $srcEnvKey = base64_decode($envKey);
         if ($srcEnvKey === false) {
-            throw new \Exception('Failed decoding envelope key', self::ERROR_CONFIRM_FAILED_DECODING_ENVELOPE_KEY);
+            throw new Exception('Failed decoding envelope key', self::ERROR_CONFIRM_FAILED_DECODING_ENVELOPE_KEY);
         }
 
         $data = null;
-        $result = @openssl_open($srcData, $data, $srcEnvKey, $privateKey);
+        $cipher_algo = 'RC4';
+        $result = @openssl_open($srcData, $data, $srcEnvKey, $privateKey, $cipher_algo);
         if ($result === false) {
-            throw new \Exception('Failed decrypting data', self::ERROR_CONFIRM_FAILED_DECRYPT_DATA);
+            throw new Exception('Failed decrypting data', self::ERROR_CONFIRM_FAILED_DECRYPT_DATA);
         }
 
         return self::factory($data);
     }
 
-    static protected function _factoryFromXml(\DOMDocument $xmlDoc)
+    /**
+     * @throws Exception
+     */
+    static protected function _factoryFromXml(DOMDocument $xmlDoc)
     {
         $elems = $xmlDoc->getElementsByTagName('order');
         if ($elems->length != 1) {
-            throw new \Exception(
+            throw new Exception(
                 'factoryFromXml order element not found', self::ERROR_FACTORY_BY_XML_ORDER_ELEM_NOT_FOUND
             );
         }
@@ -196,7 +207,7 @@ abstract class RequestAbstract
 
         $attr = $orderElem->attributes->getNamedItem('type');
         if ($attr == null || strlen($attr->nodeValue) == 0) {
-            throw new \Exception(
+            throw new Exception(
                 'factoryFromXml invalid payment request type='.$attr->nodeValue,
                 self::ERROR_FACTORY_BY_XML_ORDER_TYPE_ATTR_NOT_FOUND
             );
@@ -209,11 +220,10 @@ abstract class RequestAbstract
                 $objPmReq = new Sms();
                 break;
             default:
-                throw new \Exception(
+                throw new Exception(
                     'factoryFromXml invalid payment request type='.$attr->nodeValue,
                     self::ERROR_FACTORY_BY_XML_INVALID_TYPE
                 );
-                break;
         }
         $objPmReq->_loadFromXml($orderElem);
 
@@ -240,11 +250,14 @@ abstract class RequestAbstract
         return $this->_objRequestInfo;
     }
 
-    protected function _parseFromXml(\DOMNode $elem)
+    /**
+     * @throws Exception
+     */
+    protected function _parseFromXml(DOMNode $elem)
     {
         $xmlAttr = $elem->attributes->getNamedItem('id');
         if ($xmlAttr == null || strlen((string)$xmlAttr->nodeValue) == 0) {
-            throw new \Exception(
+            throw new Exception(
                 'Mobilpay\Payment\Request\Sms::_parseFromXml failed: empty order id',
                 self::ERROR_LOAD_FROM_XML_ORDER_ID_ATTR_MISSING
             );
@@ -253,7 +266,7 @@ abstract class RequestAbstract
 
         $elems = $elem->getElementsByTagName('signature');
         if ($elems->length != 1) {
-            throw new \Exception(
+            throw new Exception(
                 'Mobilpay\Payment\Request\Sms::loadFromXml failed: signature is missing',
                 self::ERROR_LOAD_FROM_XML_SIGNATURE_ELEM_MISSING
             );
@@ -304,6 +317,9 @@ abstract class RequestAbstract
         }
     }
 
+    /**
+     * @throws Exception
+     */
     public function encrypt($x509FilePath)
     {
         $this->_prepare();
@@ -318,13 +334,15 @@ abstract class RequestAbstract
             while (($errorString = openssl_error_string())) {
                 $errorMessage .= $errorString."\n";
             }
-            throw new \Exception($errorMessage, self::ERROR_LOAD_X509_CERTIFICATE);
+            throw new Exception($errorMessage, self::ERROR_LOAD_X509_CERTIFICATE);
         }
         $srcData = $this->_xmlDoc->saveXML();
         $publicKeys = [$publicKey];
         $encData = null;
         $envKeys = null;
-        $result = openssl_seal($srcData, $encData, $envKeys, $publicKeys);
+        $cipher_algo = 'RC4';
+        $result 	 = openssl_seal($srcData, $encData, $envKeys, $publicKeys, $cipher_algo);
+
         if ($result === false) {
             $this->outEncData = null;
             $this->outEnvKey = null;
@@ -332,7 +350,7 @@ abstract class RequestAbstract
             while (($errorString = openssl_error_string())) {
                 $errorMessage .= $errorString."\n";
             }
-            throw new \Exception($errorMessage, self::ERROR_ENCRYPT_DATA);
+            throw new Exception($errorMessage, self::ERROR_ENCRYPT_DATA);
         }
 
         $this->outEncData = base64_encode($encData);

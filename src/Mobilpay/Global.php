@@ -84,7 +84,7 @@ class MobilpayGlobal
     {
         $pattern = '/^(4)?07[0-9]{8,8}$/';
 
-        return (preg_match($pattern, $param_msisdn) != 0 ? true : false);
+        return preg_match($pattern, $param_msisdn) != 0;
     }
 
     public static function unreferrencedVariable($variable)
