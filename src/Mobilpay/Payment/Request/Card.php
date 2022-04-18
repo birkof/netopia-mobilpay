@@ -2,6 +2,9 @@
 
 namespace Mobilpay\Payment\Request;
 
+use DOMDocument;
+use DOMElement;
+use Exception;
 use Mobilpay\Payment\Invoice;
 
 /**
@@ -24,14 +27,17 @@ class Card extends RequestAbstract
         $this->type = self::PAYMENT_TYPE_CARD;
     }
 
-    protected function _loadFromXml(\DOMElement $elem)
+    /**
+     * @throws Exception
+     */
+    protected function _loadFromXml(DOMElement $elem)
     {
         parent::_parseFromXml($elem);
 
         //card request specific data
         $elems = $elem->getElementsByTagName('invoice');
         if ($elems->length != 1) {
-            throw new \Exception(
+            throw new Exception(
                 'Mobilpay\Payment\Request\Card::loadFromXml failed; invoice element is missing',
                 self::ERROR_LOAD_FROM_XML_ORDER_INVOICE_ELEM_MISSING
             );
@@ -42,18 +48,21 @@ class Card extends RequestAbstract
         return $this;
     }
 
+    /**
+     * @throws Exception
+     */
     protected function _prepare()
     {
         if (is_null($this->signature) || is_null(
                 $this->orderId
             ) || !($this->invoice instanceof Invoice)) {
-            throw new \Exception(
+            throw new Exception(
                 'One or more mandatory properties are invalid!',
                 self::ERROR_PREPARE_MANDATORY_PROPERTIES_UNSET
             );
         }
 
-        $this->_xmlDoc = new \DOMDocument('1.0', 'utf-8');
+        $this->_xmlDoc = new DOMDocument('1.0', 'utf-8');
         $rootElem = $this->_xmlDoc->createElement('order');
 
         //set payment type attribute

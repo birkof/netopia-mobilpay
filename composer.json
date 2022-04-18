@@ -8,7 +8,10 @@
             "email": "birkof@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "ext-dom": "*",
+        "ext-openssl": "*"
+    },
     "autoload": {
         "psr-4" : {
             "Mobilpay\\Payment\\" : "src/Mobilpay/Payment/"
