@@ -45,6 +45,8 @@ abstract class RequestAbstract
     const ERROR_CONFIRM_INVALID_POST_METHOD = 0x300000f4;
     const ERROR_CONFIRM_INVALID_POST_PARAMETERS = 0x300000f5;
     const ERROR_CONFIRM_INVALID_ACTION = 0x300000f6;
+    const ERROR_CONFIRM_FAILED_DECODING_IV = 0x300000f7;
+    const ERROR_REQUIRED_CIPHER_NOT_AVAILABLE = 0x300000f8;
 
     const VERSION_QUERY_STRING = 0x01;
     const VERSION_XML = 0x02;
@@ -108,6 +110,12 @@ abstract class RequestAbstract
      */
     private $outEncData = null;
 
+    /**
+     * intialization vector seed used to encrypt data
+     * @var string
+     */
+    protected $outIv = null;
+
     protected $_xmlDoc = null;
 
     protected $_requestIdentifier = null;
@@ -149,7 +157,7 @@ abstract class RequestAbstract
     /**
      * @throws Exception
      */
-    static public function factoryFromEncrypted($envKey, $encData, $privateKeyFilePath, $privateKeyPassword = null)
+    static public function factoryFromEncrypted($envKey, $encData, $privateKeyFilePath, $privateKeyPassword = null, $cipher_algo = 'RC4', $iv = null)
     {
         $privateKey = null;
         if ($privateKeyPassword == null) {
@@ -182,9 +190,19 @@ abstract class RequestAbstract
             throw new Exception('Failed decoding envelope key', self::ERROR_CONFIRM_FAILED_DECODING_ENVELOPE_KEY);
         }
 
+        $srcIv = base64_decode($iv);
+        if($srcIv === false)
+        {
+            throw new Exception('Failed decoding initialization vector', self::ERROR_CONFIRM_FAILED_DECODING_IV);
+        }
+
         $data = null;
-        $cipher_algo = 'RC4';
-        $result = @openssl_open($srcData, $data, $srcEnvKey, $privateKey, $cipher_algo);
+        if (PHP_VERSION_ID >= 70000) {
+            $result = @openssl_open($srcData, $data, $srcEnvKey, $privateKey, $cipher_algo, $srcIv);
+        } else {
+            $result = @openssl_open($srcData, $data, $srcEnvKey, $privateKey, $cipher_algo);
+        }
+
         if ($result === false) {
             throw new Exception('Failed decrypting data', self::ERROR_CONFIRM_FAILED_DECRYPT_DATA);
         }
@@ -341,7 +359,29 @@ abstract class RequestAbstract
         $encData = null;
         $envKeys = null;
         $cipher_algo = 'RC4';
-        $result 	 = openssl_seal($srcData, $encData, $envKeys, $publicKeys, $cipher_algo);
+        $iv = null;
+
+        if(PHP_VERSION_ID >= 70000) {
+            if(OPENSSL_VERSION_NUMBER > 0x10000000)
+            {
+                $cipher_algo = 'aes-256-cbc';
+            }
+        } else {
+            if (OPENSSL_VERSION_NUMBER >= 0x30000000) {
+                $this->outEncData 	= null;
+                $this->outEnvKey 	= null;
+                //$this->outCipher 	= null;
+                $this->outIv 		= null;
+                $errorMessage 		= 'incompatible configuration PHP ' . PHP_VERSION . ' & ' . OPENSSL_VERSION_TEXT;
+                throw new Exception($errorMessage, self::ERROR_REQUIRED_CIPHER_NOT_AVAILABLE);
+            }
+        }
+
+        if(PHP_VERSION_ID >= 70000) {
+            $result = openssl_seal($srcData, $encData, $envKeys, $publicKeys, $cipher_algo, $iv);
+        } else {
+            $result = openssl_seal($srcData, $encData, $envKeys, $publicKeys, $cipher_algo);
+        }
 
         if ($result === false) {
             $this->outEncData = null;
@@ -355,6 +395,7 @@ abstract class RequestAbstract
 
         $this->outEncData = base64_encode($encData);
         $this->outEnvKey = base64_encode($envKeys[0]);
+        $this->outIv = (strlen($iv) > 0) ? base64_encode($iv) : '';
     }
 
     public function getEnvKey()
@@ -365,6 +406,14 @@ abstract class RequestAbstract
     public function getEncData()
     {
         return $this->outEncData;
+    }
+
+    /**
+     * Return initialization vector seed used to encrypt data
+     */
+    public function getIv()
+    {
+        return $this->outIv;
     }
 
     public function getRequestIdentifier()
