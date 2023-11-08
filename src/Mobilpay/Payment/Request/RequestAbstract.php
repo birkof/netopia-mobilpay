@@ -119,7 +119,7 @@ abstract class RequestAbstract
 
     public function __construct()
     {
-        srand((double)microtime() * 1000000);
+        srand(intval((double)microtime() * 1000000));
         $this->_requestIdentifier = md5(uniqid(rand()));
 
         $this->_objRequestParams = new \stdClass();

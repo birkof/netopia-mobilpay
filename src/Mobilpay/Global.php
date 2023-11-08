@@ -124,7 +124,7 @@ class MobilpayGlobal
             return null;
         }
 
-        srand((double)microtime() * 1000000);
+        srand(intval((double)microtime() * 1000000));
         $password = "";
         while ($length) {
             $value = rand() % $max_value;
@@ -163,7 +163,7 @@ class MobilpayGlobal
         $al_end = ord("Z");
         $al_exclude = [ord("O"), ord("I")];
         $num_exclude = [ord("0")];
-        srand((double)microtime() * 1000000);
+        srand(intval((double)microtime() * 1000000));
         $signature_parts = [];
         for ($index = 0; $index < 5; $index++) {
             $signature_part = "";
