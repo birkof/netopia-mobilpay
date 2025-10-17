@@ -35,7 +35,7 @@ class Invoice
     protected $items = [];
     protected $exchangeRates = [];
 
-    public function __construct(\DOMNode $elem = null)
+    public function __construct(?\DOMNode $elem = null)
     {
         if ($elem != null) {
             $this->loadFromXml($elem);
