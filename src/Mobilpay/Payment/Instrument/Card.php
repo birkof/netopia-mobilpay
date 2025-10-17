@@ -26,7 +26,7 @@ class Card
     public $expMonth = null;
     public $cvv2 = null;
 
-    public function __construct(\DOMNode $elem = null)
+    public function __construct(?\DOMNode $elem = null)
     {
         if ($elem != null) {
             $this->loadFromXml($elem);

@@ -25,7 +25,7 @@ class Address
     public $email = null;
     public $mobilePhone = null;
 
-    public function __construct(\DOMNode $elem = null)
+    public function __construct(?\DOMNode $elem = null)
     {
         if ($elem != null) {
             $this->loadFromXml($elem);
