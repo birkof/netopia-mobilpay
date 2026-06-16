@@ -5,6 +5,7 @@ namespace Mobilpay\Payment\Request;
 use DOMDocument;
 use DOMNode;
 use Exception;
+use Mobilpay\MobilpayGlobal;
 
 /**
  * Class RequestAbstract
@@ -108,6 +109,18 @@ abstract class RequestAbstract
      */
     private $outEncData = null;
 
+    /**
+     * outCipher - symmetric cipher used by openssl_seal()
+     * must be relayed to the payment interface so it can decrypt the envelope
+     */
+    private $outCipher = null;
+
+    /**
+     * outIv - base64 encoded initialization vector produced by openssl_seal()
+     * null for stream ciphers (RC4); required by block ciphers such as aes-256-cbc
+     */
+    private $outIv = null;
+
     protected $_xmlDoc = null;
 
     protected $_requestIdentifier = null;
@@ -149,7 +162,7 @@ abstract class RequestAbstract
     /**
      * @throws Exception
      */
-    static public function factoryFromEncrypted($envKey, $encData, $privateKeyFilePath, $privateKeyPassword = null)
+    static public function factoryFromEncrypted($envKey, $encData, $privateKeyFilePath, $privateKeyPassword = null, $cipher = null, $iv = null)
     {
         $privateKey = null;
         if ($privateKeyPassword == null) {
@@ -183,8 +196,9 @@ abstract class RequestAbstract
         }
 
         $data = null;
-        $cipher_algo = 'RC4';
-        $result = @openssl_open($srcData, $data, $srcEnvKey, $privateKey, $cipher_algo);
+        $cipherAlgo = ($cipher !== null && $cipher !== '') ? $cipher : MobilpayGlobal::SEAL_CIPHER_LEGACY;
+        $ivRaw = ($iv !== null && $iv !== '') ? base64_decode($iv) : null;
+        $result = @openssl_open($srcData, $data, $srcEnvKey, $privateKey, $cipherAlgo, $ivRaw);
         if ($result === false) {
             throw new Exception('Failed decrypting data', self::ERROR_CONFIRM_FAILED_DECRYPT_DATA);
         }
@@ -340,12 +354,15 @@ abstract class RequestAbstract
         $publicKeys = [$publicKey];
         $encData = null;
         $envKeys = null;
-        $cipher_algo = 'RC4';
-        $result 	 = openssl_seal($srcData, $encData, $envKeys, $publicKeys, $cipher_algo);
+        $iv = null;
+        $cipherAlgo = MobilpayGlobal::getSealCipher();
+        $result 	 = openssl_seal($srcData, $encData, $envKeys, $publicKeys, $cipherAlgo, $iv);
 
         if ($result === false) {
             $this->outEncData = null;
             $this->outEnvKey = null;
+            $this->outCipher = null;
+            $this->outIv = null;
             $errorMessage = "Error while encrypting data! Reason:";
             while (($errorString = openssl_error_string())) {
                 $errorMessage .= $errorString."\n";
@@ -355,6 +372,8 @@ abstract class RequestAbstract
 
         $this->outEncData = base64_encode($encData);
         $this->outEnvKey = base64_encode($envKeys[0]);
+        $this->outCipher = $cipherAlgo;
+        $this->outIv = $iv !== null ? base64_encode($iv) : null;
     }
 
     public function getEnvKey()
@@ -365,6 +384,25 @@ abstract class RequestAbstract
     public function getEncData()
     {
         return $this->outEncData;
+    }
+
+    /**
+     * Symmetric cipher used to seal the request (e.g. RC4 or aes-256-cbc).
+     * Send it to the payment interface alongside env_key/enc_data so the
+     * gateway knows how to open the envelope.
+     */
+    public function getCipher()
+    {
+        return $this->outCipher;
+    }
+
+    /**
+     * Base64 encoded initialization vector produced by openssl_seal().
+     * null for stream ciphers (RC4); send it to the gateway for block ciphers.
+     */
+    public function getIv()
+    {
+        return $this->outIv;
     }
 
     public function getRequestIdentifier()

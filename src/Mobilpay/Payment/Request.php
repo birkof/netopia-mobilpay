@@ -159,10 +159,12 @@ class Request
      * @param resource $public_key - obtained by calling openssl_pkey_get_public
      * @param string & $env_key    - returns envelope key base64 encoded or null if function fails
      * @param string & $enc_data   - returns data to post base64 encoded or null if function fails
+     * @param string & $cipher     - returns the symmetric cipher used to seal the data
+     * @param string & $iv         - returns the base64 encoded IV (null for stream ciphers such as RC4)
      *
      * @return boolean
      */
-    public function buildAccessParameters($public_key, &$env_key, &$enc_data)
+    public function buildAccessParameters($public_key, &$env_key, &$enc_data, &$cipher = null, &$iv = null)
     {
         $params = $this->buildParametersList();
         if (is_null($params)) {
@@ -171,16 +173,21 @@ class Request
         $src_data = MobilpayGlobal::buildQueryString($params);
         $enc_data = '';
         $env_keys = [];
-        $cipher_algo = 'RC4';
-        $result = openssl_seal($src_data, $enc_data, $env_keys, [$public_key], $cipher_algo);
+        $iv_raw = null;
+        $cipher_algo = MobilpayGlobal::getSealCipher();
+        $result = openssl_seal($src_data, $enc_data, $env_keys, [$public_key], $cipher_algo, $iv_raw);
         if ($result === false) {
             $env_key = null;
             $enc_data = null;
+            $cipher = null;
+            $iv = null;
 
             return false;
         }
         $env_key = base64_encode($env_keys[0]);
         $enc_data = base64_encode($enc_data);
+        $cipher = $cipher_algo;
+        $iv = $iv_raw !== null ? base64_encode($iv_raw) : null;
 
         return true;
     }

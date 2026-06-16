@@ -15,6 +15,34 @@ class MobilpayGlobal
     const PAYMENT_NOT_ALLOWED = 0x02;
     const PAYMENT_NOT_AVAILABLE = 0x03;
 
+    /** Stream cipher historically used by openssl_seal()/openssl_open(). */
+    const SEAL_CIPHER_LEGACY = 'RC4';
+
+    /** Block cipher used when RC4 is unavailable; also accepted by the NETOPIA gateway. */
+    const SEAL_CIPHER_DEFAULT = 'aes-256-cbc';
+
+    /** OpenSSL 3.0 release: RC4 was moved to the (disabled-by-default) legacy provider. */
+    const OPENSSL_3_VERSION_NUMBER = 0x30000000;
+
+    /**
+     * Pick the symmetric cipher for openssl_seal().
+     *
+     * OpenSSL 3.0 removed RC4 from the default provider, so openssl_seal() with
+     * RC4 fails with "digital envelope routines::unsupported" (error 0308010C).
+     * On OpenSSL 3+ fall back to aes-256-cbc, which requires an IV that must be
+     * relayed to the decrypting party.
+     *
+     * @return string
+     */
+    public static function getSealCipher()
+    {
+        if (defined('OPENSSL_VERSION_NUMBER') && OPENSSL_VERSION_NUMBER >= self::OPENSSL_3_VERSION_NUMBER) {
+            return self::SEAL_CIPHER_DEFAULT;
+        }
+
+        return self::SEAL_CIPHER_LEGACY;
+    }
+
     public static function buildCRC($params)
     {
         $crc_pairs = [];
