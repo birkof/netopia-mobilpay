@@ -17,6 +17,22 @@
     "autoload": {
         "psr-4" : {
             "Mobilpay\\Payment\\" : "src/Mobilpay/Payment/"
+        },
+        "classmap": [
+            "src/Mobilpay/Global.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11",
+        "phpstan/phpstan": "^2"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse"
     }
 }
