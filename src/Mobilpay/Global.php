@@ -124,10 +124,11 @@ class MobilpayGlobal
             return null;
         }
 
-        srand(intval((double)microtime() * 1000000));
         $password = "";
         while ($length) {
-            $value = rand() % $max_value;
+            // Cryptographically secure source; same 0..(max_value-1) range as the
+            // former rand() % $max_value, but unpredictable and without modulo bias.
+            $value = random_int(0, $max_value - 1);
             if (!is_null($alpha_start) && !is_null($alpha_end) && is_array($alpha_exclude)) {
                 if ($value >= $alpha_start && $value <= $alpha_end && !in_array($value, $alpha_exclude)) {
                     $password .= chr($value);
@@ -154,6 +155,7 @@ class MobilpayGlobal
      * digit (except 0)
      *
      * @return string
+     * @throws \Exception If the platform cannot gather sufficient entropy.
      */
     public static function generateSellerSignature()
     {
@@ -163,13 +165,14 @@ class MobilpayGlobal
         $al_end = ord("Z");
         $al_exclude = [ord("O"), ord("I")];
         $num_exclude = [ord("0")];
-        srand(intval((double)microtime() * 1000000));
         $signature_parts = [];
         for ($index = 0; $index < 5; $index++) {
             $signature_part = "";
             $length = 4;
             while ($length) {
-                $value = rand() % $al_end;
+                // Cryptographically secure source; preserves the former 0..($al_end-1)
+                // range of rand() % $al_end, but unpredictable and without modulo bias.
+                $value = random_int(0, $al_end - 1);
                 if ($value >= $al_start && $value <= $al_end && !in_array($value, $al_exclude)) {
                     $signature_part .= chr($value);
                     $length--;

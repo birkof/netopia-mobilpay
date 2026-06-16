@@ -117,10 +117,14 @@ abstract class RequestAbstract
 
     public $objReqNotify = null;
 
+    /**
+     * @throws \Exception If the platform cannot gather sufficient entropy.
+     */
     public function __construct()
     {
-        srand(intval((double)microtime() * 1000000));
-        $this->_requestIdentifier = md5(uniqid(rand()));
+        // Cryptographically secure, unpredictable request identifier. 32 hex chars,
+        // same length/charset as the previous md5() output for backward compatibility.
+        $this->_requestIdentifier = bin2hex(random_bytes(16));
 
         $this->_objRequestParams = new \stdClass();
     }
@@ -133,7 +137,11 @@ abstract class RequestAbstract
     {
         $objPmReq = null;
         $xmlDoc = new DOMDocument();
-        if (@$xmlDoc->loadXML($data) === true) {
+        // LIBXML_NONET blocks network access during parsing (defense-in-depth against
+        // SSRF/XXE via external resources). External entity substitution is already
+        // disabled by default since libxml 2.9; passing the flag makes the intent
+        // explicit and keeps parsing safe on older libxml builds too.
+        if (@$xmlDoc->loadXML($data, LIBXML_NONET) === true) {
             //try to create payment request from xml
             $objPmReq = self::_factoryFromXml($xmlDoc);
             $objPmReq->_setRequestInfo(self::VERSION_XML, $data);

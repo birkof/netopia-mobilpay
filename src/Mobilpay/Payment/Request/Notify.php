@@ -202,10 +202,12 @@ class Notify
             $this->discounts = [];
             foreach ($doaElems as $de) {
                 $doaEntry = new \stdClass();
-                $doaEntry->id = $de->attributes->getNamedItem('id')->nodeValue;
-                $doaEntry->amount = $de->attributes->getNamedItem('amount')->nodeValue;
-                $doaEntry->currency = $de->attributes->getNamedItem('currency')->nodeValue;
-                $doaEntry->third_party = $de->attributes->getNamedItem('third_party')->nodeValue;
+                // Null-safe: a malformed <discount> missing any attribute must not
+                // raise a fatal "read property nodeValue on null" and abort IPN parsing.
+                $doaEntry->id = $de->attributes->getNamedItem('id')?->nodeValue;
+                $doaEntry->amount = $de->attributes->getNamedItem('amount')?->nodeValue;
+                $doaEntry->currency = $de->attributes->getNamedItem('currency')?->nodeValue;
+                $doaEntry->third_party = $de->attributes->getNamedItem('third_party')?->nodeValue;
                 $this->discounts[] = $doaEntry;
             }
         }
