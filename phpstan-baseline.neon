@@ -1,0 +1,1345 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to function is_array\(\) with array\<mixed\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Call to function is_null\(\) with int\<0, 255\> will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 2
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Constant DEFAULT_CODE_LENGTH not found\.$#'
+			identifier: constant.notFound
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:attachQueryString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:attachQueryString\(\) has parameter \$query_string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:attachQueryString\(\) has parameter \$url with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:buildCRC\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:buildCRC\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:buildQueryString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:buildQueryString\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:formatMessage\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:formatMessage\(\) has parameter \$message_format with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:formatMessage\(\) has parameter \$message_parameters with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:generatePassword\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:generatePassword\(\) has parameter \$alpha_interval with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:generatePassword\(\) has parameter \$length with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:generatePassword\(\) has parameter \$num_interval with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:isValidMsisdn\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:isValidMsisdn\(\) has parameter \$param_msisdn with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:unreferrencedVariable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Method Mobilpay\\MobilpayGlobal\:\:unreferrencedVariable\(\) has parameter \$variable with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Parameter \#1 \$character of function ord expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 4
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Parameter \#1 \$min \(0\) of function random_int expects lower number than parameter \#2 \$max \(int\<\-1, 254\>\)\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Parameter \#2 \$replace of function str_replace expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Mobilpay/Global.php
+
+		-
+			message: '#^Call to an undefined method DOMNode\:\:getElementsByTagName\(\)\.$#'
+			identifier: method.notFound
+			count: 5
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Cannot call method getNamedItem\(\) on DOMNamedNodeMap\<DOMAttr\>\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Instanceof between DOMDocument and DOMDocument will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Address\:\:createXmlElement\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Address\:\:createXmlElement\(\) has parameter \$nodeName with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Address\:\:loadFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Address\:\:toArray\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Address\:\:\$address has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Address\:\:\$email has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Address\:\:\$firstName has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Address\:\:\$lastName has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Address\:\:\$mobilePhone has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Address\:\:\$type has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Address.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Exchange\\Rate\:\:createXmlElement\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Exchange/Rate.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Exchange\\Rate\:\:loadFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Exchange/Rate.php
+
+		-
+			message: '#^Access to undefined constant Mobilpay\\Payment\\Instrument\\Card\:\:ERROR_INVALID_PARAMETER\.$#'
+			identifier: classConstant.notFound
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Call to an undefined method DOMNode\:\:getElementsByTagName\(\)\.$#'
+			identifier: method.notFound
+			count: 5
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Instanceof between DOMDocument and DOMDocument will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Instrument\\Card\:\:createXmlElement\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Instrument\\Card\:\:loadFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Instrument\\Card\:\:\$cvv2 has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Instrument\\Card\:\:\$expMonth has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Instrument\\Card\:\:\$expYear has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Instrument\\Card\:\:\$name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Instrument\\Card\:\:\$number has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Instrument/Card.php
+
+		-
+			message: '#^Call to an undefined method DOMNode\:\:getElementsByTagName\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Call to an undefined method Mobilpay\\Payment\\Invoice\\Item\:\:getTotalAmount\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Cannot call method getNamedItem\(\) on DOMNamedNodeMap\<DOMAttr\>\|null\.$#'
+			identifier: method.nonObject
+			count: 6
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Caught class Mobilpay\\Payment\\Exception not found\.$#'
+			identifier: class.notFound
+			count: 6
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Class Mobilpay\\Payment\\Exchange\\Rate constructor invoked with 1 parameter, 0 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Instanceof between DOMDocument and DOMDocument will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Loose comparison using \=\= between null and null will always evaluate to true\.$#'
+			identifier: equal.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:addHeadExchangeRate\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:addHeadItem\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:addTailExchangeRate\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:addTailItem\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:createXmlElement\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:getBillingAddress\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:getShippingAddress\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:loadFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:removeHeadExchangeRate\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:removeHeadItem\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:removeTailExchangeRate\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:removeTailItem\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:setBillingAddress\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\:\:setShippingAddress\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Parameter \#1 \$node of method DOMNode\:\:appendChild\(\) expects DOMElement, DOMElement\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$amount has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$billingAddress has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$currency has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$details has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$exchangeRates has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$installments has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$items has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$promotionCode has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$selectedInstallments has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$shippingAddress has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\:\:\$tokenId has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Variable \$xmlItems might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: src/Mobilpay/Payment/Invoice.php
+
+		-
+			message: '#^Call to an undefined method DOMNode\:\:getElementsByTagName\(\)\.$#'
+			identifier: method.notFound
+			count: 6
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Instanceof between DOMDocument and DOMDocument will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\\Item\:\:createXmlElement\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\\Item\:\:getTotalAmmount\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Invoice\\Item\:\:loadFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\\Item\:\:\$code has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\\Item\:\:\$measurment has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\\Item\:\:\$name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\\Item\:\:\$price has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\\Item\:\:\$quantity has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Invoice\\Item\:\:\$vat has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Invoice/Item.php
+
+		-
+			message: '#^Call to function is_array\(\) with array will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Call to function is_null\(\) with string will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 3
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\:\:buildParametersList\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(string\(10\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 295 on line 6$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(string\(24\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 133 on line 4$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(string\(255\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 94 on line 4$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(string\(255\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 96 on line 4$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(string\(64\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 208 on line 5$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Parameter \#1 \$string of function urlencode expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Parameter &\$enc_data by\-ref type of method Mobilpay\\Payment\\Request\:\:buildAccessParameters\(\) expects string, null given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Parameter &\$env_key by\-ref type of method Mobilpay\\Payment\\Request\:\:buildAccessParameters\(\) expects string, null given\.$#'
+			identifier: parameterByRef.type
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_currency has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_details has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_first_name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_last_name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_msisdn has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_params type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_price has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_service has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_signature has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_tran_id has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\:\:\$m_type has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request.php
+
+		-
+			message: '#^Call to function is_null\(\) with string will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 3
+			path: src/Mobilpay/Payment/Request/Card.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\Card\:\:_loadFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/Card.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\Card\:\:_prepare\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/Card.php
+
+		-
+			message: '#^Negated boolean expression is always true\.$#'
+			identifier: booleanNot.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Request/Card.php
+
+		-
+			message: '#^Parameter \#1 \$data of method DOMDocument\:\:createCDATASection\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Mobilpay/Payment/Request/Card.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Card\:\:\$invoice has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Card.php
+
+		-
+			message: '#^Result of \|\| is always true\.$#'
+			identifier: booleanOr.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Request/Card.php
+
+		-
+			message: '#^Call to function is_array\(\) with array will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Call to function is_null\(\) with int will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 2
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Cannot access property \$amount on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Cannot access property \$attributes on DOMElement\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Cannot access property \$currency on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Cannot access property \$id on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Cannot access property \$nodeValue on DOMElement\|null\.$#'
+			identifier: property.nonObject
+			count: 19
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Cannot access property \$third_party on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Cannot call method getElementsByTagName\(\) on DOMElement\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Loose comparison using \=\= between false and false will always evaluate to true\.$#'
+			identifier: equal.alwaysTrue
+			count: 2
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\Notify\:\:_loadFromQueryString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\Notify\:\:loadFromXml\(\) should return \$this\(Mobilpay\\Payment\\Request\\Notify\) but return statement is missing\.$#'
+			identifier: return.missing
+			count: 2
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$elem with type DOMNode is not subtype of native type DOMElement\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^PHPDoc tag @throws with type Mobilpay\\Payment\\Request\\Exception is not subtype of Throwable$#'
+			identifier: throws.notThrowable
+			count: 2
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property DOMNode\:\:\$nodeValue \(string\|null\) does not accept int\.$#'
+			identifier: assign.propertyType
+			count: 2
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$_crc \(string\) does not accept string\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$action has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$current_payment_count \(int\) does not accept string\|null\.$#'
+			identifier: assign.propertyType
+			count: 2
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$customer has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$customer_id has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$customer_type has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$discounts type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$errorCode has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$errorMessage has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$installments has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$issuer has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$originalAmount has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$paidByPhone has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$pan_masked has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$params type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$paymentCode has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$paymentInstrumentId \(int\) does not accept string\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$processedAmount has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$promotionAmount has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$purchaseId \(string\) does not accept string\|null\.$#'
+			identifier: assign.propertyType
+			count: 2
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$rrn has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$timestamp has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$token_expiration_date has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$token_id has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Notify\:\:\$validationCode has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Notify.php
+
+		-
+			message: '#^Call to an undefined method DOMNode\:\:getElementsByTagName\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Cannot access property \$attributes on DOMElement\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Cannot access property \$nodeValue on DOMAttr\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Cannot call method getNamedItem\(\) on DOMNamedNodeMap\<DOMAttr\>\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:__get\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:__get\(\) has parameter \$name with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:__isset\(\) has parameter \$name with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:__set\(\) has parameter \$name with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:__set\(\) has parameter \$value with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_factoryFromQueryString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_factoryFromQueryString\(\) has parameter \$data with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_factoryFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_loadFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_parseFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_prepare\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_setRequestInfo\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_setRequestInfo\(\) has parameter \$reqData with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:_setRequestInfo\(\) has parameter \$reqVersion with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:encrypt\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:encrypt\(\) has parameter \$x509FilePath with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:factory\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:factory\(\) has parameter \$data with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:factoryFromEncrypted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:factoryFromEncrypted\(\) has parameter \$encData with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:factoryFromEncrypted\(\) has parameter \$envKey with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:factoryFromEncrypted\(\) has parameter \$privateKeyFilePath with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:factoryFromEncrypted\(\) has parameter \$privateKeyPassword with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:getEncData\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:getEnvKey\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:getRequestIdentifier\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\RequestAbstract\:\:getRequestInfo\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(string\(64\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 131 on line 4$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(string\(64\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 234 on line 5$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Parameter \#1 \$elem of method Mobilpay\\Payment\\Request\\Sms\:\:_loadFromXml\(\) expects DOMElement, DOMElement\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$_objRequestInfo has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$_objRequestParams has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$_requestIdentifier has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$_xmlDoc has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$objPmNotify has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$objReqNotify has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$orderId has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$outEncData has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$outEnvKey has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$params has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$service has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$signature has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$timestamp has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\RequestAbstract\:\:\$type has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between string and false will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 2
+			path: src/Mobilpay/Payment/Request/RequestAbstract.php
+
+		-
+			message: '#^Call to function is_null\(\) with string will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 3
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Cannot access property \$nodeValue on DOMElement\|null\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\Sms\:\:_loadFromQueryString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\Sms\:\:_loadFromQueryString\(\) has parameter \$queryString with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\Sms\:\:_loadFromXml\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Method Mobilpay\\Payment\\Request\\Sms\:\:_prepare\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Negated boolean expression is always true\.$#'
+			identifier: booleanNot.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(string\(10\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 263 on line 5$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Parameter \#1 \$string of function urlencode expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Property Mobilpay\\Payment\\Request\\Sms\:\:\$msisdn has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
+
+		-
+			message: '#^Result of \|\| is always true\.$#'
+			identifier: booleanOr.alwaysTrue
+			count: 1
+			path: src/Mobilpay/Payment/Request/Sms.php
